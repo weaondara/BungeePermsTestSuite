@@ -1,0 +1,35 @@
+name: BungeePermsTestSuite
+main: net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTestSuite
+version: 1.0
+author: wea_ondara
+load: startup
+depends: [BungeePerms]
+
+commands:
+  bungeepermstestsuite:
+    description: base command
+    aliases: bpts
+
+permissions:
+  root.*:
+    default: false
+    children:
+      root.node1.*:
+        children:
+          root.node1.perm1:
+            default: true
+          root.node1.perm2:
+            default: true
+      root.node2.*:
+        default: false
+        children:
+          root.node2.perm3:
+            default: false
+          root.node2.perm4:
+            default: false
+      root.node3.*:
+        children:
+          root.node3.perm5:
+            default: op
+          root.node3.perm6:
+            default: op

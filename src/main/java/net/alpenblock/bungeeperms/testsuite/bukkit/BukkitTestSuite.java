@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lombok.Getter;
 import net.alpenblock.bungeeperms.ChatColor;
+import net.alpenblock.bungeeperms.Color;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsIterate;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsList;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsTest;
@@ -49,7 +50,16 @@ public class BukkitTestSuite extends JavaPlugin
             return false;
         }
         
-        if (args.length == 1 && args[0].equalsIgnoreCase("testall"))
+        if (args.length == 1 && args[0].equalsIgnoreCase("help"))
+        {
+            sender.sendMessage("/bpts help - Shows this help");
+            sender.sendMessage("/bpts list - Lists the test cases");
+            sender.sendMessage("/bpts testall - Tests all test cases");
+            sender.sendMessage("/bpts player <player> - Sets the player for the test cases");
+            sender.sendMessage("/bpts test <testcase> - Executes a single testcase");
+            return true;
+        }
+        else if (args.length == 1 && args[0].equalsIgnoreCase("testall"))
         {
             String[] tests = new String[this.tests.size()];
             for (int i = 0; i < this.tests.size(); i++)
@@ -57,18 +67,30 @@ public class BukkitTestSuite extends JavaPlugin
                 tests[i] = this.tests.get(i).getName();
             }
             test(sender, tests);
+            return true;
+        }
+        else if (args.length == 1 && args[0].equalsIgnoreCase("list"))
+        {
+            for (BukkitTest test : this.tests)
+            {
+                sender.sendMessage("- " + test.getName());
+            }
+            return true;
         }
         else if (args.length > 1 && args[0].equalsIgnoreCase("player"))
         {
             testplayer = args[1];
+            return true;
         }
         else if (args.length > 1 && args[0].equalsIgnoreCase("test"))
         {
             String[] tests = new String[args.length - 1];
             System.arraycopy(args, 1, tests, 0, args.length - 1);
             test(sender, tests);
+            return true;
         }
         
+        sender.sendMessage(Color.Error + "Command not found.");
         return false;
     }
     

@@ -14,11 +14,6 @@ public class ServerWorldTest extends BungeeTest
     @Override
     public boolean test(CommandSender sender)
     {
-        if (ProxyServer.getInstance().getPlayer(BungeeTestSuite.getTestplayer()) == null)
-        {
-            throw new RuntimeException("test " + BungeeTestSuite.getTestplayer() + " player not found");
-        }
-        
         if (ProxyServer.getInstance().getPlayer(BungeeTestSuite.getTestplayer()) != null)
         {
             BungeeSender bs = new BungeeSender(ProxyServer.getInstance().getPlayer(BungeeTestSuite.getTestplayer()));

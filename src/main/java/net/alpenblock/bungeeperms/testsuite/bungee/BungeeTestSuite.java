@@ -8,6 +8,7 @@ import lombok.Getter;
 import net.alpenblock.bungeeperms.ChatColor;
 import net.alpenblock.bungeeperms.Color;
 import net.alpenblock.bungeeperms.testsuite.bungee.tests.PrefixSuffixTest;
+import net.alpenblock.bungeeperms.testsuite.bungee.tests.ServerWorldTest;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.plugin.Command;
@@ -30,6 +31,7 @@ public class BungeeTestSuite extends Plugin
         
         ProxyServer.getInstance().getPluginManager().registerCommand(this, new TestCommand("bungeepermstestsuite", "bungeepermstestsuite", "bpts"));
         tests.add(new PrefixSuffixTest());
+        tests.add(new ServerWorldTest());
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)

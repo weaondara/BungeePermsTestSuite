@@ -2,4 +2,4 @@ name: BungeePermsTestSuite
 main: net.alpenblock.bungeeperms.testsuite.bungee.BungeeTestSuite
 version: 1.0
 author: wea_ondara
-depends: BungeePerms
+depends: [BungeePerms]

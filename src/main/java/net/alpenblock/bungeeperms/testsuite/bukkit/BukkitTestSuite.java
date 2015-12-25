@@ -7,6 +7,7 @@ import java.util.List;
 import lombok.Getter;
 import net.alpenblock.bungeeperms.ChatColor;
 import net.alpenblock.bungeeperms.Color;
+import net.alpenblock.bungeeperms.testsuite.bukkit.tests.AllowOpsTest;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsIterate;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsList;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsTest;
@@ -32,6 +33,7 @@ public class BukkitTestSuite extends JavaPlugin
     {
         instance = this;
         
+        tests.add(new AllowOpsTest());
         tests.add(new PrefixSuffixTest());
         tests.add(new RecalculatePermissionsTest());
         tests.add(new SuperPermsIterate());

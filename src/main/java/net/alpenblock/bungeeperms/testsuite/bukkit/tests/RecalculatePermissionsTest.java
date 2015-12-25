@@ -53,7 +53,8 @@ public class RecalculatePermissionsTest extends BukkitTest
         //inject old-fake-permissible into player's permissible
         Player p = Bukkit.getPlayer(BukkitTestSuite.getTestplayer());
         Permissible perm = (Permissible) Injector.getPermissible(p);
-        perm.setOldPermissible(new FakeOldPermissible(p, perm.getOldPermissible()));
+        Statics.setField(perm, new FakeOldPermissible(p, perm.getOldPermissible()), "oldPermissible");
+        Statics.setField(PermissibleBase.class, perm.getOldPermissible(), Statics.getField(perm, perm.getClass(), "superperms"), "permissions");
         p.recalculatePermissions();
 
         PermissionAttachment attach = new PermissionAttachment(BukkitPlugin.getInstance(), perm.getOldPermissible());
@@ -84,7 +85,7 @@ public class RecalculatePermissionsTest extends BukkitTest
 
         //restore
         BungeePerms.getInstance().getPermissionsManager().removeUserFromCache(newuser);
-        perm.setOldPermissible(((FakeOldPermissible)perm.getOldPermissible()).getOldperm());
+        Statics.setField(perm, ((FakeOldPermissible) perm.getOldPermissible()).getOldperm(), "oldPermissible");
 
         return result();
     }
@@ -97,6 +98,7 @@ public class RecalculatePermissionsTest extends BukkitTest
 
     private class FakeOldPermissible extends PermissibleBase
     {
+
         @Getter
         org.bukkit.permissions.Permissible oldperm;
 
@@ -129,4 +131,5 @@ public class RecalculatePermissionsTest extends BukkitTest
             perms.put("testperm4.testperm1.foo", new PermissionAttachmentInfo(this, "testperm4.testperm1.foo", attach, false));
         }
     }
+
 }

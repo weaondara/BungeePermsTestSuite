@@ -1,5 +1,7 @@
 package net.alpenblock.bungeeperms.testsuite.bukkit.tests;
 
+import net.alpenblock.bungeeperms.BungeePerms;
+import net.alpenblock.bungeeperms.platform.bukkit.BukkitConfig;
 import net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTest;
 import net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTestSuite;
 import org.bukkit.Bukkit;
@@ -15,7 +17,7 @@ public class SuperPermsTest extends BukkitTest
         Player p = Bukkit.getPlayer(BukkitTestSuite.getTestplayer());
         if (p == null)
         {
-           throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
+            throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
         }
 
         boolean wasop = p.isOp();
@@ -29,10 +31,17 @@ public class SuperPermsTest extends BukkitTest
 
         //op tests
         p.setOp(true);
-        assertTrue(sender, p.hasPermission("root.*"));
+        assertFalse(sender, p.hasPermission("root.*"));
         assertTrue(sender, p.hasPermission("root.node1.perm1"));
-        assertTrue(sender, p.hasPermission("root.node2.perm3"));
-        assertTrue(sender, p.hasPermission("root.node3.perm5"));
+        assertFalse(sender, p.hasPermission("root.node2.perm3"));
+        if (((BukkitConfig) BungeePerms.getInstance().getConfig()).isAllowops())
+        {
+            assertTrue(sender, p.hasPermission("root.node3.perm5"));
+        }
+        else
+        {
+            assertFalse(sender, p.hasPermission("root.node3.perm5"));
+        }
 
         //restore op
         p.setOp(wasop);

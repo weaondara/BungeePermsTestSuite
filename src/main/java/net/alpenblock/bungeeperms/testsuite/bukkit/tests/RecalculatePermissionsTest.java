@@ -32,7 +32,7 @@ public class RecalculatePermissionsTest extends BukkitTest
     {
         if (Bukkit.getPlayer(BukkitTestSuite.getTestplayer()) == null)
         {
-            throw new RuntimeException("test " + BukkitTestSuite.getTestplayer() + " player not found");
+            throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
         }
 
         //create user perm list

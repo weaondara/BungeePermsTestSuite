@@ -24,7 +24,7 @@ public class PrefixSuffixTest extends BukkitTest
     {
         if (Bukkit.getPlayer(BukkitTestSuite.getTestplayer()) == null)
         {
-            throw new RuntimeException("test " + BukkitTestSuite.getTestplayer() + " player not found");
+            throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
         }
         
         Map<String, Server> uservers = new HashMap();

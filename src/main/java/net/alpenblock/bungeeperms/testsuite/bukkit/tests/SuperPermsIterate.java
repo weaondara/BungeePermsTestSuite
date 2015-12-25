@@ -18,13 +18,13 @@ public class SuperPermsIterate extends BukkitTest
         Player p = Bukkit.getPlayer(BukkitTestSuite.getTestplayer());
         if (p == null)
         {
-            throw new RuntimeException(BukkitTestSuite.getTestplayer() + " is not online!");
+            throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
         }
 
         User user = BungeePerms.getInstance().getPermissionsManager().getUser(BukkitTestSuite.getTestplayer());
         if (user == null)
         {
-            throw new RuntimeException(BukkitTestSuite.getTestplayer() + " is not online!");
+            throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
         }
         for (String perm : user.getEffectivePerms())
         {

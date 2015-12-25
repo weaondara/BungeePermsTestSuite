@@ -24,7 +24,7 @@ public class PrefixSuffixTest extends BungeeTest
     {
         if (ProxyServer.getInstance().getPlayer(BungeeTestSuite.getTestplayer()) == null)
         {
-            throw new RuntimeException("test " + BungeeTestSuite.getTestplayer() + " player not found");
+            throw new RuntimeException("test player " + BungeeTestSuite.getTestplayer() + " not found");
         }
         
         Map<String, Server> uservers = new HashMap();

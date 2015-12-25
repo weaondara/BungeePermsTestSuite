@@ -16,7 +16,7 @@ public class SuperPermsList extends BukkitTest
         Player p = Bukkit.getPlayer(BukkitTestSuite.getTestplayer());
         if (p == null)
         {
-            throw new RuntimeException(BukkitTestSuite.getTestplayer() + " is not online!");
+            throw new RuntimeException("test player " + BukkitTestSuite.getTestplayer() + " not found");
         }
 
         for (PermissionAttachmentInfo perms : p.getEffectivePermissions())

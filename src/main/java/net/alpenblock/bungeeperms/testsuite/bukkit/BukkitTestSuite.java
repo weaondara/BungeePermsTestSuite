@@ -11,6 +11,7 @@ import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsIterate;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsList;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.SuperPermsTest;
 import net.alpenblock.bungeeperms.testsuite.bukkit.tests.PrefixSuffixTest;
+import net.alpenblock.bungeeperms.testsuite.bukkit.tests.RecalculatePermissionsTest;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
@@ -31,10 +32,11 @@ public class BukkitTestSuite extends JavaPlugin
     {
         instance = this;
         
+        tests.add(new PrefixSuffixTest());
+        tests.add(new RecalculatePermissionsTest());
         tests.add(new SuperPermsIterate());
         tests.add(new SuperPermsTest());
         tests.add(new SuperPermsList());
-        tests.add(new PrefixSuffixTest());
     }
     
     @Override

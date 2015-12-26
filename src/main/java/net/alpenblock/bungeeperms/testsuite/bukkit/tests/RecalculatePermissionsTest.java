@@ -11,9 +11,9 @@ import net.alpenblock.bungeeperms.Group;
 import net.alpenblock.bungeeperms.Server;
 import net.alpenblock.bungeeperms.Statics;
 import net.alpenblock.bungeeperms.User;
+import net.alpenblock.bungeeperms.platform.bukkit.BPPermissible;
 import net.alpenblock.bungeeperms.platform.bukkit.BukkitPlugin;
 import net.alpenblock.bungeeperms.platform.bukkit.Injector;
-import net.alpenblock.bungeeperms.platform.bukkit.Permissible;
 import net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTest;
 import net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTestSuite;
 import org.bukkit.Bukkit;
@@ -52,7 +52,7 @@ public class RecalculatePermissionsTest extends BukkitTest
 
         //inject old-fake-permissible into player's permissible
         Player p = Bukkit.getPlayer(BukkitTestSuite.getTestplayer());
-        Permissible perm = (Permissible) Injector.getPermissible(p);
+        BPPermissible perm = (BPPermissible) Injector.getPermissible(p);
         Statics.setField(perm, new FakeOldPermissible(p, perm.getOldPermissible()), "oldPermissible");
         Statics.setField(PermissibleBase.class, perm.getOldPermissible(), Statics.getField(perm, perm.getClass(), "superperms"), "permissions");
         p.recalculatePermissions();

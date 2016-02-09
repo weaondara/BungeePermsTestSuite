@@ -1,6 +1,7 @@
 package net.alpenblock.bungeeperms.testsuite.bukkit.tests;
 
 import net.alpenblock.bungeeperms.BungeePerms;
+import net.alpenblock.bungeeperms.ChatColor;
 import net.alpenblock.bungeeperms.User;
 import net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTest;
 import net.alpenblock.bungeeperms.testsuite.bukkit.BukkitTestSuite;
@@ -41,10 +42,10 @@ public class VaultDisplayableTest extends BukkitTest
             throw new RuntimeException("vault: chat service provider is not bungeeperms");
         }
 
-        sender.sendMessage("BP    Prefix: " + u.buildPrefix().replaceAll("§", "&"));
-        sender.sendMessage("Vault Prefix: " + chat.getPlayerPrefix(Bukkit.getPlayer(BukkitTestSuite.getTestplayer())).replaceAll("§", "&"));
-        sender.sendMessage("BP    Suffix: " + u.buildSuffix().replaceAll("§", "&"));
-        sender.sendMessage("Vault Suffix: " + chat.getPlayerSuffix(Bukkit.getPlayer(BukkitTestSuite.getTestplayer())).replaceAll("§", "&"));
+        sender.sendMessage("BP    Prefix: " + u.buildPrefix().replaceAll("" + ChatColor.COLOR_CHAR, "&"));
+        sender.sendMessage("Vault Prefix: " + chat.getPlayerPrefix(Bukkit.getPlayer(BukkitTestSuite.getTestplayer())).replaceAll("" + ChatColor.COLOR_CHAR, "&"));
+        sender.sendMessage("BP    Suffix: " + u.buildSuffix().replaceAll("" + ChatColor.COLOR_CHAR, "&"));
+        sender.sendMessage("Vault Suffix: " + chat.getPlayerSuffix(Bukkit.getPlayer(BukkitTestSuite.getTestplayer())).replaceAll("" + ChatColor.COLOR_CHAR, "&"));
 
         return result();
     }

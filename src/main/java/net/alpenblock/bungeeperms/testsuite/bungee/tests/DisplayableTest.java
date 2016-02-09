@@ -1,6 +1,7 @@
 package net.alpenblock.bungeeperms.testsuite.bungee.tests;
 
 import net.alpenblock.bungeeperms.BungeePerms;
+import net.alpenblock.bungeeperms.ChatColor;
 import net.alpenblock.bungeeperms.User;
 import net.alpenblock.bungeeperms.testsuite.bungee.BungeeTest;
 import net.alpenblock.bungeeperms.testsuite.bungee.BungeeTestSuite;
@@ -24,8 +25,8 @@ public class DisplayableTest extends BungeeTest
             throw new RuntimeException("test player " + BungeeTestSuite.getTestplayer() + " not found");
         }
 
-        sender.sendMessage("Prefix: " + u.buildPrefix().replaceAll("§", "&"));
-        sender.sendMessage("Suffix: " + u.buildSuffix().replaceAll("§", "&"));
+        sender.sendMessage("Prefix: " + u.buildPrefix().replaceAll("" + ChatColor.COLOR_CHAR, "&"));
+        sender.sendMessage("Suffix: " + u.buildSuffix().replaceAll("" + ChatColor.COLOR_CHAR, "&"));
 
         return result();
     }

@@ -24,8 +24,8 @@ public class DisplayableTest extends BungeeTest
             throw new RuntimeException("test player " + BungeeTestSuite.getTestplayer() + " not found");
         }
 
-        sender.sendMessage("Prefix: " + u.buildPrefix());
-        sender.sendMessage("Suffix: " + u.buildSuffix());
+        sender.sendMessage("Prefix: " + u.buildPrefix().replaceAll("§", "&"));
+        sender.sendMessage("Suffix: " + u.buildSuffix().replaceAll("§", "&"));
 
         return result();
     }
